@@ -13,7 +13,9 @@ resource "aws_eks_node_group" "nodes" {
   instance_types = [var.instance_type]
   disk_size      = var.disk_size
 
-  tags   = var.eks_metadata_tags
+  tags = merge(var.eks_metadata_tags, {
+    yor_trace = "266689da-2266-454c-a9f4-80f28f672b9d"
+  })
   labels = var.metadata_labels
 
   depends_on = [var.depends-on-aws-auth]

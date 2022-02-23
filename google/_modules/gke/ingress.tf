@@ -14,6 +14,9 @@ resource "google_dns_managed_zone" "current" {
 
   name     = var.metadata_name
   dns_name = "${var.metadata_fqdn}."
+  labels = {
+    yor_trace = "117c1e67-1a14-447e-9fe6-0072eb335dc1"
+  }
 }
 
 resource "google_dns_record_set" "host" {

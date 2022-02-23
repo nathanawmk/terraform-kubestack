@@ -6,6 +6,9 @@ resource "azurerm_virtual_network" "current" {
   address_space       = var.vnet_address_space
   resource_group_name = data.azurerm_resource_group.current.name
   location            = data.azurerm_resource_group.current.location
+  tags = {
+    yor_trace = "88950609-dfdd-4885-8cf8-cab06c48f26c"
+  }
 }
 
 resource "azurerm_subnet" "current" {

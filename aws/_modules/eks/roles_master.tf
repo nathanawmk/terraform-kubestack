@@ -16,6 +16,9 @@ resource "aws_iam_role" "master" {
 }
 POLICY
 
+  tags = {
+    yor_trace = "71085918-b662-4dc5-8ffa-5fba5e786abb"
+  }
 }
 
 resource "aws_iam_role_policy_attachment" "master_cluster_policy" {
