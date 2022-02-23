@@ -1,7 +1,9 @@
 resource "aws_vpc" "current" {
   cidr_block = var.vpc_cidr
 
-  tags = local.eks_metadata_tags
+  tags = merge(local.eks_metadata_tags, {
+    yor_trace = "e7249a85-a665-4228-b925-8a37ca80b423"
+  })
 }
 
 resource "aws_subnet" "current" {
@@ -12,7 +14,9 @@ resource "aws_subnet" "current" {
   vpc_id                  = aws_vpc.current.id
   map_public_ip_on_launch = true
 
-  tags = local.eks_metadata_tags
+  tags = merge(local.eks_metadata_tags, {
+    yor_trace = "8f018265-f62d-4d3b-a865-5cb8b810e525"
+  })
 }
 
 resource "aws_subnet" "node_pool" {
@@ -23,17 +27,24 @@ resource "aws_subnet" "node_pool" {
   vpc_id                  = aws_vpc.current.id
   map_public_ip_on_launch = true
 
-  tags = local.eks_metadata_tags
+  tags = merge(local.eks_metadata_tags, {
+    yor_trace = "d7876b05-c32a-48d9-a53e-3922e3afdac9"
+  })
 }
 
 resource "aws_internet_gateway" "current" {
   vpc_id = aws_vpc.current.id
 
-  tags = local.eks_metadata_tags
+  tags = merge(local.eks_metadata_tags, {
+    yor_trace = "2b2e813d-a71c-41fc-b003-b5b81ee73026"
+  })
 }
 
 resource "aws_route_table" "current" {
   vpc_id = aws_vpc.current.id
+  tags = {
+    yor_trace = "46a9e1c8-f150-4e60-91d2-372d70f0f9d6"
+  }
 }
 
 resource "aws_route" "current" {

@@ -15,4 +15,7 @@ resource "aws_eks_cluster" "current" {
   version = var.cluster_version
 
   enabled_cluster_log_types = var.enabled_cluster_log_types
+  tags = {
+    yor_trace = "ddcc05bd-0d29-4076-a4b7-4e13397697e4"
+  }
 }

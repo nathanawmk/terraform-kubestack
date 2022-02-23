@@ -10,7 +10,9 @@ resource "aws_security_group" "masters" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  tags = local.eks_metadata_tags
+  tags = merge(local.eks_metadata_tags, {
+    yor_trace = "4ed3a66a-4aab-4813-acf5-c61947ecc70c"
+  })
 }
 
 resource "aws_security_group_rule" "masters_ingress_apiserver_public" {

@@ -78,5 +78,7 @@ resource "azurerm_kubernetes_cluster" "current" {
     }
   }
 
-  tags = var.metadata_labels
+  tags = merge(var.metadata_labels, {
+    yor_trace = "eb509a61-c6cb-4d17-81a9-9075ba0308f9"
+  })
 }

@@ -10,4 +10,7 @@ resource "aws_iam_openid_connect_provider" "current" {
   client_id_list  = ["sts.${data.aws_partition.current.dns_suffix}"]
   thumbprint_list = [data.tls_certificate.current[0].certificates[0].sha1_fingerprint]
   url             = aws_eks_cluster.current.identity[0].oidc[0].issuer
+  tags = {
+    yor_trace = "5f365e44-a3f8-42de-b75b-1e20159bff51"
+  }
 }

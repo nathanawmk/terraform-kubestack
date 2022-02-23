@@ -16,6 +16,9 @@ resource "aws_iam_role" "node" {
 }
 POLICY
 
+  tags = {
+    yor_trace = "24d6fc0a-bb3b-4741-bd11-0ad2365b32fa"
+  }
 }
 
 resource "aws_iam_role_policy_attachment" "node_policy" {
@@ -36,5 +39,8 @@ resource "aws_iam_role_policy_attachment" "node_container_registry_ro" {
 resource "aws_iam_instance_profile" "nodes" {
   name = var.metadata_name
   role = aws_iam_role.node.name
+  tags = {
+    yor_trace = "f3c7c094-7341-495c-b367-2b5c4dbb26da"
+  }
 }
 
